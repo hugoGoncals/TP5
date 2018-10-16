@@ -1,0 +1,52 @@
+extends layout
+
+block corpo
+    .w3-container
+        .w3-card-4
+            header.we-container.w3-light-grey
+                h1= obra.titulo
+            .w3-container 
+                table.w3-table.w3-bordered
+                    tr
+                        th Titulo
+                        td= obra.titulo
+                    tr
+                        th Tipo
+                        td= obra.tipo
+                    tr
+                        th Compositor
+                        td= obra.compositor
+                    if obra.arranjo
+                        tr
+                        th Arranjo
+                        td= obra.arranjo
+                    if obra.instrumentos
+                        tr 
+                            th Instrumentos
+                            td
+                                table
+                                    tr
+                                        th Nome
+                                        th Partitura
+                                        th Voz 
+                                        th Clave 
+                                        th Afinação 
+                                    each i in obra.instrumentos
+                                        tr
+                                            td= i.nome
+                                            td= i.partitura.path
+                                            if i.partitura.voz 
+                                                td= i.partitura.voz 
+                                            else
+                                                td Sem voz
+                                            if i.partitura.clave 
+                                                td= i.partitura.clave 
+                                            else
+                                                td Sem clave
+                                            if i.partitura.afinacao 
+                                                td= i.partitura.afinacao 
+                                            else
+                                                td Sem afinacao
+            footer.w3-container.w3-light-grey
+                a(href="http://localhost:5000/") Voltar atras
+                    
